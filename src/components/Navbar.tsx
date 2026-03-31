@@ -1,10 +1,12 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ShoppingBag } from "lucide-react";
+import { Menu, X } from "lucide-react";
+import CartDrawer from "@/components/CartDrawer";
 
 const links = [
   { label: "Inicio", href: "#" },
   { label: "Colecciones", href: "#colecciones" },
+  { label: "Productos", href: "#productos" },
   { label: "Tienda", href: "https://www.summit-wear.com/collections", external: true },
 ];
 
@@ -44,22 +46,15 @@ const Navbar = () => {
               {l.label}
             </a>
           ))}
-          <a
-            href="https://www.summit-wear.com/cart"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-foreground transition-colors hover:text-primary"
-          >
-            <ShoppingBag className="h-5 w-5" />
-          </a>
+          <CartDrawer />
         </div>
 
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-foreground md:hidden"
-        >
-          {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-        </button>
+        <div className="flex items-center gap-4 md:hidden">
+          <CartDrawer />
+          <button onClick={() => setMenuOpen(!menuOpen)} className="text-foreground">
+            {menuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+          </button>
+        </div>
       </div>
 
       <AnimatePresence>
