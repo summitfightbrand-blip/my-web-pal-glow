@@ -1,10 +1,11 @@
+import { Link } from "react-router-dom";
 import { Instagram, ArrowUpRight } from "lucide-react";
 
 const footerLinks = [
-  { label: "Street Wear", href: "https://www.summit-wear.com/collections/street-wear" },
-  { label: "Kids", href: "https://www.summit-wear.com/collections/kids" },
-  { label: "Kimonos", href: "https://www.summit-wear.com/collections/bjj-gi" },
-  { label: "No Gi", href: "https://www.summit-wear.com/collections/no-gi" },
+  { label: "Street Wear", to: "/collection/street-wear" },
+  { label: "Kids", to: "/collection/kids" },
+  { label: "Kimonos", to: "/collection/kimonos" },
+  { label: "No Gi", to: "/collection/no-gi" },
 ];
 
 const SiteFooter = () => {
@@ -13,9 +14,9 @@ const SiteFooter = () => {
       <div className="container mx-auto px-6 py-20 lg:px-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-2">
-            <h3 className="mb-2 text-3xl font-bold text-foreground">
+            <Link to="/" className="mb-2 inline-block text-3xl font-bold text-foreground">
               <span className="text-gradient">S</span>UMMIT
-            </h3>
+            </Link>
             <p className="mb-6 max-w-xs font-body text-sm font-light leading-relaxed text-muted-foreground">
               Entrena. Supera. Repite.
               <br />
@@ -39,15 +40,13 @@ const SiteFooter = () => {
             <ul className="space-y-3">
               {footerLinks.map((item) => (
                 <li key={item.label}>
-                  <a
-                    href={item.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                  <Link
+                    to={item.to}
                     className="group inline-flex items-center gap-1 font-body text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     {item.label}
                     <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

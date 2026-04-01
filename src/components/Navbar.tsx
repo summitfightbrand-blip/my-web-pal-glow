@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 import CartDrawer from "@/components/CartDrawer";
 
 const links = [
-  { label: "Inicio", href: "#" },
-  { label: "Colecciones", href: "#colecciones" },
-  { label: "Productos", href: "#productos" },
-  { label: "Tienda", href: "https://www.summit-wear.com/collections", external: true },
+  { label: "Inicio", to: "/" },
+  { label: "Colecciones", to: "/#colecciones" },
+  { label: "Productos", to: "/#productos" },
 ];
 
 const Navbar = () => {
