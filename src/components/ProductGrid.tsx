@@ -44,7 +44,7 @@ const ProductGrid = ({ query, title }: { query?: string; title?: string }) => {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center py-24">
+      <div className="flex items-center justify-center py-28">
         <Loader2 className="h-8 w-8 animate-spin text-primary" />
       </div>
     );
@@ -52,7 +52,7 @@ const ProductGrid = ({ query, title }: { query?: string; title?: string }) => {
 
   if (products.length === 0) {
     return (
-      <div className="py-24 text-center">
+      <div className="py-28 text-center">
         <ShoppingBag className="mx-auto mb-4 h-12 w-12 text-muted-foreground" />
         <p className="font-heading text-xl text-muted-foreground">No se encontraron productos</p>
       </div>
@@ -60,20 +60,23 @@ const ProductGrid = ({ query, title }: { query?: string; title?: string }) => {
   }
 
   return (
-    <section className="py-16 md:py-24">
+    <section className="py-20 md:py-28">
       <div className="container mx-auto px-6 lg:px-16">
         {title && (
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mb-12 text-center"
+            className="mb-14 text-center"
           >
-            <h2 className="text-4xl font-bold text-foreground md:text-5xl">{title}</h2>
+            <span className="mb-3 inline-block font-body text-[10px] tracking-[0.4em] text-primary">
+              CATÁLOGO
+            </span>
+            <h2 className="text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">{title}</h2>
           </motion.div>
         )}
 
-        <div className="grid gap-6 grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 grid-cols-2 lg:grid-cols-4">
           {products.map((product, i) => {
             const image = product.node.images.edges[0]?.node;
             const price = product.node.priceRange.minVariantPrice;
@@ -83,7 +86,7 @@ const ProductGrid = ({ query, title }: { query?: string; title?: string }) => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.05 }}
+                transition={{ duration: 0.4, delay: i * 0.04 }}
               >
                 <Link
                   to={`/product/${product.node.handle}`}
@@ -94,22 +97,29 @@ const ProductGrid = ({ query, title }: { query?: string; title?: string }) => {
                       <img
                         src={image.url}
                         alt={image.altText || product.node.title}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        className="h-full w-full object-cover transition-all duration-500 group-hover:scale-110"
                       />
                     )}
+                    {/* Hover overlay */}
+                    <div className="absolute inset-0 bg-background/0 transition-colors duration-300 group-hover:bg-background/20" />
+                    
+                    {/* Quick add button */}
                     <button
                       onClick={(e) => handleQuickAdd(e, product)}
                       disabled={isLoading}
-                      className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 transition-all group-hover:opacity-100 hover:scale-110 disabled:opacity-50"
+                      className="absolute bottom-3 right-3 flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground opacity-0 shadow-lg transition-all duration-300 group-hover:opacity-100 hover:scale-110 disabled:opacity-50"
                     >
                       <ShoppingBag className="h-4 w-4" />
                     </button>
+                    
+                    {/* Bottom accent line */}
+                    <div className="absolute bottom-0 left-0 h-0.5 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
                   </div>
-                  <div className="mt-3 space-y-1">
-                    <h3 className="font-heading text-sm font-semibold tracking-wider text-foreground transition-colors group-hover:text-primary">
+                  <div className="mt-3 space-y-1 px-1">
+                    <h3 className="font-heading text-xs font-semibold tracking-[0.1em] text-foreground transition-colors group-hover:text-primary sm:text-sm">
                       {product.node.title}
                     </h3>
-                    <p className="font-body text-sm text-muted-foreground">
+                    <p className="font-body text-sm font-medium text-primary">
                       {parseFloat(price.amount).toFixed(2)} {price.currencyCode}
                     </p>
                   </div>

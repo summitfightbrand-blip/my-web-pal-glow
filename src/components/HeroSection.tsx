@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 
 const HeroSection = () => {
   return (
@@ -7,9 +8,10 @@ const HeroSection = () => {
         <img
           src="https://www.summit-wear.com/cdn/shop/files/IMG_3357.jpg?v=1774863577&width=2400"
           alt="Summit Wear - Believe in yourself"
-          className="h-full w-full object-cover"
+          className="h-full w-full object-cover scale-105"
         />
         <div className="hero-overlay absolute inset-0" />
+        <div className="absolute inset-0 bg-gradient-to-r from-background/60 via-transparent to-background/30" />
       </div>
 
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-6 text-center">
@@ -18,7 +20,7 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <span className="mb-4 inline-block font-body text-sm tracking-[0.3em] text-primary">
+          <span className="mb-6 inline-block rounded-full border border-primary/30 bg-primary/5 px-5 py-1.5 font-body text-[10px] tracking-[0.4em] text-primary backdrop-blur-sm">
             ENTRENA · SUPERA · REPITE
           </span>
         </motion.div>
@@ -27,7 +29,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="mb-6 max-w-4xl text-5xl font-bold leading-[0.95] text-foreground md:text-7xl lg:text-8xl"
+          className="mb-6 max-w-4xl text-5xl font-bold leading-[0.9] text-foreground md:text-7xl lg:text-9xl"
         >
           BELIEVE IN{" "}
           <span className="text-gradient">YOURSELF</span>
@@ -37,7 +39,7 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.4 }}
-          className="mb-8 max-w-lg font-body text-base font-light text-muted-foreground md:text-lg"
+          className="mb-10 max-w-md font-body text-sm font-light leading-relaxed text-muted-foreground md:text-base"
         >
           Ropa técnica y streetwear diseñada para fighters que no se rinden.
         </motion.p>
@@ -46,19 +48,17 @@ const HeroSection = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.6 }}
-          className="flex gap-4"
+          className="flex flex-col items-center gap-4 sm:flex-row"
         >
           <a
-            href="https://www.summit-wear.com/collections"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="glow-amber rounded-sm bg-primary px-8 py-3 font-heading text-sm font-semibold tracking-wider text-primary-foreground transition-all hover:scale-105"
+            href="#productos"
+            className="glow-amber group rounded-sm bg-primary px-10 py-3.5 font-heading text-sm font-semibold tracking-[0.2em] text-primary-foreground transition-all hover:scale-105"
           >
             COMPRAR AHORA
           </a>
           <a
             href="#colecciones"
-            className="rounded-sm border border-foreground/30 px-8 py-3 font-heading text-sm font-semibold tracking-wider text-foreground transition-all hover:border-primary hover:text-primary"
+            className="rounded-sm border border-foreground/20 px-10 py-3.5 font-heading text-sm font-semibold tracking-[0.2em] text-foreground transition-all hover:border-primary/50 hover:text-primary"
           >
             EXPLORAR
           </a>
@@ -71,13 +71,12 @@ const HeroSection = () => {
         transition={{ delay: 1.2, duration: 1 }}
         className="absolute bottom-8 left-1/2 -translate-x-1/2"
       >
-        <div className="h-10 w-6 rounded-full border-2 border-foreground/30 p-1">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-            className="h-2 w-2 rounded-full bg-primary"
-          />
-        </div>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+        >
+          <ChevronDown className="h-6 w-6 text-foreground/30" />
+        </motion.div>
       </motion.div>
     </section>
   );

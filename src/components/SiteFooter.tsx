@@ -1,33 +1,52 @@
-import { Instagram } from "lucide-react";
+import { Instagram, ArrowUpRight } from "lucide-react";
+
+const footerLinks = [
+  { label: "Street Wear", href: "https://www.summit-wear.com/collections/street-wear" },
+  { label: "Kids", href: "https://www.summit-wear.com/collections/kids" },
+  { label: "Kimonos", href: "https://www.summit-wear.com/collections/bjj-gi" },
+  { label: "No Gi", href: "https://www.summit-wear.com/collections/no-gi" },
+];
 
 const SiteFooter = () => {
   return (
-    <footer className="border-t border-border bg-card py-16">
-      <div className="container mx-auto px-6 lg:px-16">
-        <div className="grid gap-12 md:grid-cols-3">
-          <div>
-            <h3 className="mb-4 text-2xl font-bold text-foreground">SUMMIT</h3>
-            <p className="font-body text-sm font-light text-muted-foreground">
+    <footer className="border-t border-border bg-card noise-bg">
+      <div className="container mx-auto px-6 py-20 lg:px-16">
+        <div className="grid gap-12 md:grid-cols-4">
+          <div className="md:col-span-2">
+            <h3 className="mb-2 text-3xl font-bold text-foreground">
+              <span className="text-gradient">S</span>UMMIT
+            </h3>
+            <p className="mb-6 max-w-xs font-body text-sm font-light leading-relaxed text-muted-foreground">
               Entrena. Supera. Repite.
               <br />
-              Ropa técnica para fighters.
+              Ropa técnica para fighters que no se rinden.
             </p>
+            <a
+              href="https://www.instagram.com/summitwear_"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 font-body text-xs text-muted-foreground transition-all hover:border-primary/50 hover:text-primary"
+            >
+              <Instagram className="h-4 w-4" />
+              @summitwear_
+            </a>
           </div>
 
           <div>
-            <h4 className="mb-4 font-heading text-sm tracking-wider text-foreground">
-              TIENDA
+            <h4 className="mb-5 font-heading text-[11px] tracking-[0.3em] text-foreground">
+              COLECCIONES
             </h4>
-            <ul className="space-y-2 font-body text-sm text-muted-foreground">
-              {["Street Wear", "Kids", "Kimonos", "No Gi"].map((item) => (
-                <li key={item}>
+            <ul className="space-y-3">
+              {footerLinks.map((item) => (
+                <li key={item.label}>
                   <a
-                    href={`https://www.summit-wear.com/collections/${item.toLowerCase().replace(" ", "-")}`}
+                    href={item.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="transition-colors hover:text-primary"
+                    className="group inline-flex items-center gap-1 font-body text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
-                    {item}
+                    {item.label}
+                    <ArrowUpRight className="h-3 w-3 opacity-0 transition-opacity group-hover:opacity-100" />
                   </a>
                 </li>
               ))}
@@ -35,29 +54,25 @@ const SiteFooter = () => {
           </div>
 
           <div>
-            <h4 className="mb-4 font-heading text-sm tracking-wider text-foreground">
-              SÍGUENOS
+            <h4 className="mb-5 font-heading text-[11px] tracking-[0.3em] text-foreground">
+              INFORMACIÓN
             </h4>
-            <a
-              href="https://www.instagram.com/summitwear_"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 font-body text-sm text-muted-foreground transition-colors hover:text-primary"
-            >
-              <Instagram className="h-5 w-5" />
-              @summitwear_
-            </a>
+            <ul className="space-y-3 font-body text-sm text-muted-foreground">
+              <li>Envíos en 24/48h</li>
+              <li>Gratis a partir de 130€</li>
+              <li>Devoluciones 14 días</li>
+            </ul>
           </div>
         </div>
 
-        <div className="section-divider mt-12 w-full" />
+        <div className="section-divider mt-16 w-full" />
 
-        <div className="mt-8 flex flex-col items-center justify-between gap-4 md:flex-row">
-          <p className="font-body text-xs text-muted-foreground">
-            © {new Date().getFullYear()} Summit Wear. Todos los derechos reservados.
+        <div className="mt-8 flex flex-col items-center justify-between gap-3 md:flex-row">
+          <p className="font-body text-[11px] tracking-wider text-muted-foreground">
+            © {new Date().getFullYear()} SUMMIT WEAR. Todos los derechos reservados.
           </p>
-          <p className="font-body text-xs text-muted-foreground">
-            Envíos gratis a partir de 130€
+          <p className="font-body text-[11px] tracking-wider text-muted-foreground">
+            Diseñado para fighters.
           </p>
         </div>
       </div>
