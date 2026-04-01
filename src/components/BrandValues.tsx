@@ -26,7 +26,7 @@ const values = [
 
 const BrandValues = () => {
   return (
-    <section className="bg-secondary py-24 md:py-32">
+    <section className="bg-secondary py-28 md:py-36 noise-bg">
       <div className="container mx-auto px-6 lg:px-16">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -34,15 +34,15 @@ const BrandValues = () => {
           viewport={{ once: true }}
           className="mb-16 text-center"
         >
-          <span className="mb-3 inline-block font-body text-xs tracking-[0.3em] text-primary">
+          <span className="mb-3 inline-block font-body text-[10px] tracking-[0.4em] text-primary">
             POR QUÉ SUMMIT
           </span>
-          <h2 className="text-4xl font-bold text-foreground md:text-5xl">
+          <h2 className="text-4xl font-bold text-foreground md:text-5xl lg:text-6xl">
             NUESTROS <span className="text-gradient">VALORES</span>
           </h2>
         </motion.div>
 
-        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {values.map((v, i) => (
             <motion.div
               key={v.title}
@@ -50,15 +50,18 @@ const BrandValues = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="group rounded-sm border border-border bg-card p-8 text-center transition-all hover:border-primary/30 hover:glow-amber"
+              className="group relative overflow-hidden rounded-sm border border-border bg-card p-8 text-center transition-all duration-500 hover:border-primary/30"
             >
-              <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
-                <v.icon className="h-6 w-6" />
+              <div className="card-shine absolute inset-0" />
+              <div className="relative z-10">
+                <div className="mx-auto mb-6 flex h-14 w-14 items-center justify-center rounded-full border border-primary/20 text-primary transition-all duration-300 group-hover:border-primary/50 group-hover:glow-amber-sm">
+                  <v.icon className="h-6 w-6" />
+                </div>
+                <h3 className="mb-3 text-base font-bold tracking-[0.1em] text-foreground">{v.title}</h3>
+                <p className="font-body text-xs font-light leading-relaxed text-muted-foreground">
+                  {v.desc}
+                </p>
               </div>
-              <h3 className="mb-3 text-lg font-bold text-foreground">{v.title}</h3>
-              <p className="font-body text-sm font-light text-muted-foreground">
-                {v.desc}
-              </p>
             </motion.div>
           ))}
         </div>
