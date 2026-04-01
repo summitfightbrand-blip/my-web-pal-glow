@@ -25,6 +25,7 @@ const App = () => (
         <CartSyncWrapper>
           <Routes>
             <Route path="/" element={<Index />} />
+            <Route path="/collection/:slug" element={<Collection />} />
             <Route path="/product/:handle" element={<ProductDetail />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
