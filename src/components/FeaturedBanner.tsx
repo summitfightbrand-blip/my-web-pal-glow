@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const FeaturedBanner = () => {
   return (
@@ -32,14 +33,12 @@ const FeaturedBanner = () => {
             Descubre las nuevas piezas diseñadas para dominar el tatami y la calle.
             Materiales premium, cortes técnicos y el estilo Summit que te define.
           </p>
-          <a
-            href="https://www.summit-wear.com/collections"
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to="/collection/street-wear"
             className="glow-amber inline-block rounded-sm bg-primary px-10 py-4 font-heading text-sm font-semibold tracking-[0.2em] text-primary-foreground transition-all hover:scale-105"
           >
             DESCUBRIR AHORA
-          </a>
+          </Link>
         </motion.div>
       </div>
     </section>
