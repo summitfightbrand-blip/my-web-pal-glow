@@ -78,16 +78,14 @@ const Navbar = () => {
             >
               <div className="flex flex-col gap-1 px-6 py-4">
                 {links.map((l) => (
-                  <a
+                  <Link
                     key={l.label}
-                    href={l.href}
-                    target={l.external ? "_blank" : undefined}
-                    rel={l.external ? "noopener noreferrer" : undefined}
+                    to={l.to}
                     onClick={() => setMenuOpen(false)}
                     className="rounded-sm px-3 py-3 font-heading text-sm tracking-[0.15em] text-foreground transition-colors hover:bg-secondary hover:text-primary"
                   >
                     {l.label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </motion.div>
