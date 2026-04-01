@@ -40,24 +40,22 @@ const Navbar = () => {
         }`}
       >
         <div className="container mx-auto flex items-center justify-between px-6 py-4 lg:px-16">
-          <a href="#" className="group font-heading text-2xl font-bold tracking-[0.15em] text-foreground">
+          <Link to="/" className="group font-heading text-2xl font-bold tracking-[0.15em] text-foreground">
             <span className="text-gradient">S</span>UMMIT
             <span className="ml-1 font-body text-[9px] font-light tracking-[0.4em] text-muted-foreground opacity-0 transition-opacity group-hover:opacity-100">
               WEAR
             </span>
-          </a>
+          </Link>
 
           <div className="hidden items-center gap-10 md:flex">
             {links.map((l) => (
-              <a
+              <Link
                 key={l.label}
-                href={l.href}
-                target={l.external ? "_blank" : undefined}
-                rel={l.external ? "noopener noreferrer" : undefined}
+                to={l.to}
                 className="relative font-heading text-[11px] tracking-[0.2em] text-muted-foreground transition-colors hover:text-foreground after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-primary after:transition-all after:duration-300 hover:after:w-full"
               >
                 {l.label}
-              </a>
+              </Link>
             ))}
             <CartDrawer />
           </div>
